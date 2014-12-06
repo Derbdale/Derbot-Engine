@@ -1,0 +1,30 @@
+{
+	"name": "Derbot Engine",
+	"description": "The Derbot Game Engine",
+	"authors": ["Derbdale"],
+	"license": "GPL-2.0",
+	"targetType": "executable",
+	"configurations": [
+		{
+			"name": "Debug",
+			"targetType": "executable",
+			"targetPath":"build/debug",
+			"preBuildCommands":["rm -r build/debug", "mkdir build\\debug", "CLS"],
+			"postBuildCommands":["cp dlls/* build/debug", "cp assets build/debug/assets -R", "rm -r .dub"]
+		},
+		{
+			"name": "Release",
+			"targetType": "executable",
+			"lflags": ["-L/exet:nt/su:windows"],
+			"targetPath": "build/release",
+			"preBuildCommands":["rm -r build/release", "mkdir build\\release", "CLS"],
+			"postBuildCommands":["cp dlls/* build/release", "cp assets build/release/assets -R", "rm -r .dub"]
+		}
+	],
+	"buildOptions": [
+	],
+	"dependencies": {
+		"derelict-sdl2":"~master",
+		"derelict-gl3":"~master",
+	},
+}
