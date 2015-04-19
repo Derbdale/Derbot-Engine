@@ -1,5 +1,5 @@
 {
-	"name": "Derbot Engine",
+	"name": "derbot engine",
 	"description": "The Derbot Game Engine",
 	"authors": ["Derbdale"],
 	"license": "GPL-2.0",
@@ -19,6 +19,22 @@
 			"targetPath": "build/release",
 			"preBuildCommands":["rm -r build/release", "mkdir build\\release", "CLS"],
 			"postBuildCommands":["cp dlls/* build/release", "cp assets build/release/assets -R", "rm -r .dub"]
+		},
+		
+		{
+			"name": "Debug-Windows",
+			"targetType": "executable",
+			"targetPath":"build\\debug",
+			"preBuildCommands":["rd /s /q build\\debug", "md build\\debug", "CLS"],
+			"postBuildCommands":["copy dlls\\* build\\debug", "xcopy assets build\\debug\\assets\\ /s /e", "rd /s /q .dub"]
+		},
+		{
+			"name": "Release-Windows",
+			"targetType": "executable",
+			"lflags": ["-L/exet:nt/su:windows"],
+			"targetPath": "build\\release",
+			"preBuildCommands":["rd /s /q build\\release", "md build\\release", "CLS"],
+			"postBuildCommands":["copy dlls\\* build\\release", "xcopy assets build\\release\\assets\\ /s /e", "rd /s /q .dub"]
 		}
 	],
 	"buildOptions": [
