@@ -51,8 +51,8 @@ class FontRenderer{
 
 		foreach(char c; text.toUpper){
 			glBegin(GL_QUADS);
-				float topLeftX = ((FontData.characters.indexOf(c) - (floor(FontData.characters.indexOf(c)/10)*10))*FontData.size[font] + FontData.x[font][c])/(FontData.size[font]*10);
-				float topLeftY = (floor(FontData.characters.indexOf(c)/10)*FontData.size[font] + FontData.y[font][c])/(FontData.size[font]*10);
+				float topLeftX = ((FontData.characters.indexOf(c) - (floor(cast(float)(FontData.characters.indexOf(c)/10))*10))*FontData.size[font] + FontData.x[font][c])/(FontData.size[font]*10);
+				float topLeftY = (floor(cast(float)(FontData.characters.indexOf(c)/10))*FontData.size[font] + FontData.y[font][c])/(FontData.size[font]*10);
 				glTexCoord2f(topLeftX, topLeftY);
 				glVertex3f(0.0f, 0.0f, 0.0f);
 				glTexCoord2f(topLeftX+(FontData.w[font][c]/(FontData.size[font]*10)), topLeftY);
